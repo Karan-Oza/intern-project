@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby World - Balloon Burst Game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: url("Graphics/Symbol 3 copy.png") no-repeat center/cover;
+        }
+        #gameContainer {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .balloon {
+            position: absolute;
+            bottom: 220px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 80px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        #handle, #pump, #air-pump {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            cursor: pointer;
+        }
+        #handle {
+            bottom: 150px;
+            left: 81%;
+            background: url(Graphics/Symbol\ 320001.png) no-repeat center/contain;
+        }
+        #pump {
+            bottom: 10px;
+            left: 81%;
+            background: url(Graphics/Symbol\ 320003.png) no-repeat center/contain;
+        }
+        #air-pump {
+            bottom: 60px;
+            left: 71%;
+            background: url(Graphics/Symbol\ 320002.png) no-repeat center/contain;
+        }
+        /* Animation for floating effect */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(50px); }
+            100% { transform: translateY(0); }
+        }
+        #handle {
+            animation: float 1s ease-in-out infinite;
+        }
+        /* Burst effect */
+        .burst {
+            position: relative;
+            width: 0;
+            height: 0;
+            border: 50px solid transparent;
+            border-radius: 50%;
+            background: radial-gradient(circle, red, orange, yellow);
+            box-shadow: 0 0 20px rgba(255, 165, 0, 0.8), 0 0 40px rgba(255, 69, 0, 0.5);
+            animation: burst 0.5s ease-out forwards;
+        }
+        @keyframes burst {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <div id="balloon" class="balloon"></div>
+        <div id="handle"></div>
+        <div id="pump"></div>
+        <div id="air-pump"></div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
